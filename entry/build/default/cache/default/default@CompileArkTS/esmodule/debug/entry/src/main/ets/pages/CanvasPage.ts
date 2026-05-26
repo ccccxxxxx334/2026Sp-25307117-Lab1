@@ -47,14 +47,30 @@ class CanvasPage extends ViewPU {
             builder: () => {
                 let jsDialog = new PrizeDialog(this, {
                     prizeData: this.__prizeData,
-                    enableFlag: this.__enableFlag
+                    enableFlag: this.__enableFlag,
+                    onClose: () => {
+                        // 检查是否抽中“再抽一次”
+                        if (this.prizeData.message === '再抽一次') {
+                            // 自动重新抽奖
+                            this.enableFlag = false;
+                            this.startAnimator();
+                        }
+                    }
                 }, undefined, -1, () => { }, { page: "entry/src/main/ets/pages/CanvasPage.ets", line: 43, col: 14 });
                 jsDialog.setController(this.dialogController);
                 ViewPU.create(jsDialog);
                 let paramsLambda = () => {
                     return {
                         prizeData: this.__prizeData,
-                        enableFlag: this.__enableFlag
+                        enableFlag: this.__enableFlag,
+                        onClose: () => {
+                            // 检查是否抽中“再抽一次”
+                            if (this.prizeData.message === '再抽一次') {
+                                // 自动重新抽奖
+                                this.enableFlag = false;
+                                this.startAnimator();
+                            }
+                        }
                     };
                 };
                 jsDialog.paramsGenerator_ = paramsLambda;
@@ -253,15 +269,64 @@ class CanvasPage extends ViewPU {
         }, Canvas);
         Canvas.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Image.create({ "id": 16777243, "type": 20000, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
-            Image.width(StyleConstants.CENTER_IMAGE_WIDTH);
-            Image.height(StyleConstants.CENTER_IMAGE_HEIGHT);
-            Image.enabled(this.enableFlag);
-            Image.onClick(() => {
+            // 紫色按钮（无三角形）
+            Stack.create();
+            // 紫色按钮（无三角形）
+            Stack.width(80);
+            // 紫色按钮（无三角形）
+            Stack.height(80);
+            // 紫色按钮（无三角形）
+            Stack.enabled(this.enableFlag);
+            // 紫色按钮（无三角形）
+            Stack.onClick(() => {
                 this.enableFlag = !this.enableFlag;
                 this.startAnimator();
             });
-        }, Image);
+        }, Stack);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Circle.create();
+            Circle.width(80);
+            Circle.height(80);
+            Circle.fill('#9B59B6');
+            Circle.shadow({ radius: 4, color: '#4A0E4E', offsetX: 2, offsetY: 2 });
+        }, Circle);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Circle.create();
+            Circle.width(56);
+            Circle.height(56);
+            Circle.fill('#D1B3FF');
+        }, Circle);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('开始');
+            Text.fontSize(18);
+            Text.fontColor('#FFFFFF');
+            Text.fontWeight(FontWeight.Bold);
+        }, Text);
+        Text.pop();
+        // 紫色按钮（无三角形）
+        Stack.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 三角形指针（绝对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            Text.create('▲');
+            // 三角形指针（绝对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            Text.fontSize(35);
+            // 三角形指针（绝对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            Text.fontColor('#00000');
+            // 三角形指针（绝对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            // 三角形指针（相对定位，放在按钮正上方）
+            Text.offset({ x: 0, y: -36 });
+        }, Text);
+        // 三角形指针（绝对定位，放在按钮正上方）
+        // 三角形指针（相对定位，放在按钮正上方）
+        // 三角形指针（相对定位，放在按钮正上方）
+        Text.pop();
         Stack.pop();
     }
     /**

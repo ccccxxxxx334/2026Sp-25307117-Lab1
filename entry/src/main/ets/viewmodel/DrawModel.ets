@@ -167,7 +167,7 @@ export default class DrawModel {
     }
     this.canvasContext.textAlign = CommonConstants.TEXT_ALIGN;
     this.canvasContext.textBaseline = CommonConstants.TEXT_BASE_LINE;
-    this.canvasContext.fillStyle = '#000000';  // 黑色
+    this.canvasContext.fillStyle = ColorConstants.TEXT_COLOR;  // 使用常量中的白色
     this.canvasContext.font = '50px sans-serif';
 
     // 奖品文字列表（不带 emoji，因为弧形文字容易乱）

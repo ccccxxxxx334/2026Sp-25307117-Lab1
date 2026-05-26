@@ -1,38 +1,21 @@
-/*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-import { matrix4 } from '@kit.ArkUI';
 import PrizeData from '../viewmodel/PrizeData';
-import StyleConstants from '../common/constants/StyleConstants';
 import CommonConstants from '../common/constants/CommonConstants';
+import StyleConstants from '../common/constants/StyleConstants';
 
 @CustomDialog
 export default struct PrizeDialog {
   @Link prizeData: PrizeData;
   @Link enableFlag: boolean;
   private controller?: CustomDialogController;
+  onClose?: () => void;  // 新增：关闭弹窗后的回调
 
   build() {
     Column() {
-      // 先显示大表情（如果有的话）
       if (this.prizeData.emoji) {
         Text(this.prizeData.emoji)
           .fontSize(80)
           .margin({ top: $r('app.float.dialog_image_top'), bottom: 10 })
       } else {
-        // 如果没有单独的表情，就显示原来的图片（兜底）
         Image(this.prizeData.imageSrc !== undefined ? this.prizeData.imageSrc : '')
           .width($r('app.float.dialog_image_size'))
           .height($r('app.float.dialog_image_size'))
@@ -61,6 +44,9 @@ export default struct PrizeDialog {
         .onClick(() => {
           this.controller?.close();
           this.enableFlag = !this.enableFlag;
+          if (this.onClose) {
+            this.onClose();  // 调用回调
+          }
         })
     }
     .backgroundColor($r('app.color.dialog_background'))

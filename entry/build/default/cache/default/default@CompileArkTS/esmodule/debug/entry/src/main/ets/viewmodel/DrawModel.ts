@@ -129,7 +129,7 @@ export default class DrawModel {
         }
         this.canvasContext.textAlign = CommonConstants.TEXT_ALIGN;
         this.canvasContext.textBaseline = CommonConstants.TEXT_BASE_LINE;
-        this.canvasContext.fillStyle = '#000000'; // 黑色
+        this.canvasContext.fillStyle = ColorConstants.TEXT_COLOR; // 使用常量中的白色
         this.canvasContext.font = '50px sans-serif';
         // 奖品文字列表（不带 emoji，因为弧形文字容易乱）
         let textList = [
@@ -305,7 +305,7 @@ export default class DrawModel {
         switch (scopeNum) {
             case 1:
                 prizeData.message = '再抽一次';
-                prizeData.emoji = '🥳';
+                prizeData.emoji = '😀';
                 break;
             case 2:
                 prizeData.message = '问我一个问题';
@@ -317,7 +317,7 @@ export default class DrawModel {
                 break;
             case 4:
                 prizeData.message = '再抽一次';
-                prizeData.emoji = '😀';
+                prizeData.emoji = '🥳';
                 break;
             case 5:
                 prizeData.message = '你答应我一件事';

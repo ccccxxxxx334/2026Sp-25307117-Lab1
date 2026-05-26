@@ -5,10 +5,11 @@ interface PrizeDialog_Params {
     prizeData?: PrizeData;
     enableFlag?: boolean;
     controller?: CustomDialogController;
+    onClose?: () => void;
 }
 import type PrizeData from '../viewmodel/PrizeData';
-import StyleConstants from "@bundle:com.example.canvascomponent/entry/ets/common/constants/StyleConstants";
 import CommonConstants from "@bundle:com.example.canvascomponent/entry/ets/common/constants/CommonConstants";
+import StyleConstants from "@bundle:com.example.canvascomponent/entry/ets/common/constants/StyleConstants";
 export default class PrizeDialog extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -18,12 +19,16 @@ export default class PrizeDialog extends ViewPU {
         this.__prizeData = new SynchedPropertyObjectTwoWayPU(params.prizeData, this, "prizeData");
         this.__enableFlag = new SynchedPropertySimpleTwoWayPU(params.enableFlag, this, "enableFlag");
         this.controller = undefined;
+        this.onClose = undefined;
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
     setInitiallyProvidedValue(params: PrizeDialog_Params) {
         if (params.controller !== undefined) {
             this.controller = params.controller;
+        }
+        if (params.onClose !== undefined) {
+            this.onClose = params.onClose;
         }
     }
     updateStateVars(params: PrizeDialog_Params) {
@@ -56,6 +61,7 @@ export default class PrizeDialog extends ViewPU {
     setController(ctr: CustomDialogController) {
         this.controller = ctr;
     }
+    private onClose?: () => void; // 新增：关闭弹窗后的回调
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -65,7 +71,6 @@ export default class PrizeDialog extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
-            // 先显示大表情（如果有的话）
             if (this.prizeData.emoji) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -79,18 +84,13 @@ export default class PrizeDialog extends ViewPU {
             else {
                 this.ifElseBranchUpdateFunction(1, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        // 如果没有单独的表情，就显示原来的图片（兜底）
                         Image.create(this.prizeData.imageSrc !== undefined ? this.prizeData.imageSrc : '');
-                        // 如果没有单独的表情，就显示原来的图片（兜底）
                         Image.width({ "id": 16777238, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
-                        // 如果没有单独的表情，就显示原来的图片（兜底）
                         Image.height({ "id": 16777238, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
-                        // 如果没有单独的表情，就显示原来的图片（兜底）
                         Image.margin({
                             top: { "id": 16777239, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
                             bottom: { "id": 16777237, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }
                         });
-                        // 如果没有单独的表情，就显示原来的图片（兜底）
                         Image.rotate({
                             x: 0,
                             y: 0,
@@ -118,6 +118,9 @@ export default class PrizeDialog extends ViewPU {
             Text.onClick(() => {
                 this.controller?.close();
                 this.enableFlag = !this.enableFlag;
+                if (this.onClose) {
+                    this.onClose(); // 调用回调
+                }
             });
         }, Text);
         Text.pop();

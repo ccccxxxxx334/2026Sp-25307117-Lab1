@@ -42,7 +42,15 @@ struct CanvasPage {
   dialogController: CustomDialogController = new CustomDialogController({
     builder: PrizeDialog({
       prizeData: $prizeData,
-      enableFlag: $enableFlag
+      enableFlag: $enableFlag,
+      onClose: () => {
+        // 检查是否抽中“再抽一次”
+        if (this.prizeData.message === '再抽一次') {
+          // 自动重新抽奖
+          this.enableFlag = false;
+          this.startAnimator();
+        }
+      }
     }),
     autoCancel: false,
     alignment: DialogAlignment.Center,
@@ -123,14 +131,39 @@ struct CanvasPage {
           centerY: this.screenHeight / CommonConstants.TWO
         })
 
-      Image($r('app.media.ic_center'))
-        .width(StyleConstants.CENTER_IMAGE_WIDTH)
-        .height(StyleConstants.CENTER_IMAGE_HEIGHT)
-        .enabled(this.enableFlag)
-        .onClick(() => {
-          this.enableFlag = !this.enableFlag;
-          this.startAnimator();
-        })
+      // 紫色按钮（无三角形）
+      Stack() {
+        Circle()
+          .width(80)
+          .height(80)
+          .fill('#9B59B6')
+          .shadow({ radius: 4, color: '#4A0E4E', offsetX: 2, offsetY: 2 })
+
+        Circle()
+          .width(56)
+          .height(56)
+          .fill('#D1B3FF')
+
+        Text('开始')
+          .fontSize(18)
+          .fontColor('#FFFFFF')
+          .fontWeight(FontWeight.Bold)
+      }
+      .width(80)
+      .height(80)
+      .enabled(this.enableFlag)
+      .onClick(() => {
+        this.enableFlag = !this.enableFlag;
+        this.startAnimator();
+      })
+
+      // 三角形指针（绝对定位，放在按钮正上方）
+      // 三角形指针（相对定位，放在按钮正上方）
+      // 三角形指针（相对定位，放在按钮正上方）
+      Text('▲')
+        .fontSize(35)
+        .fontColor('#00000')
+        .offset({ x: 0, y: -36 })
     }
     .width(StyleConstants.FULL_PERCENT)
     .height(StyleConstants.FULL_PERCENT)

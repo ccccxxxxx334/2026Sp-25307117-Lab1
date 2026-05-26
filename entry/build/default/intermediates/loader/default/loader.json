@@ -19,8 +19,5 @@
   "updateVersionInfo": {},
   "customizedHar": false,
   "anBuildOutPut": "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\build\\default\\intermediates\\loader_out\\default\\an\\arm64-v8a",
-  "anBuildMode": "type",
-  "patchConfig": {
-    "changedFileList": "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\build\\default\\intermediates\\patch\\default\\changedFileList.json"
-  }
+  "anBuildMode": "type"
 }

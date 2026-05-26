@@ -1508,7 +1508,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\DrawModel.ets": {
-      "mtimeMs": 1779784979592.1787,
+      "mtimeMs": 1779788622768.7512,
       "children": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\CommonConstants.ets",
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\CommonConstants.ets",
@@ -1525,12 +1525,11 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\view\\PrizeDialog.ets": {
-      "mtimeMs": 1779784515073.0913,
+      "mtimeMs": 1779787514483.917,
       "children": [
-        "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.matrix4.d.ts",
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\PrizeData.ets",
-        "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\StyleConstants.ets",
-        "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\CommonConstants.ets"
+        "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\CommonConstants.ets",
+        "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\StyleConstants.ets"
       ],
       "parent": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\pages\\CanvasPage.ets"
@@ -1538,7 +1537,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\PrizeData.ets": {
-      "mtimeMs": 1779784540569.1472,
+      "mtimeMs": 1779786504557.2124,
       "children": [],
       "parent": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\pages\\CanvasPage.ets",
@@ -1605,7 +1604,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\pages\\CanvasPage.ets": {
-      "mtimeMs": 1776763905766.6416,
+      "mtimeMs": 1779804102363.1855,
       "children": [
         "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.window.d.ts",
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\utils\\Logger.ets",
@@ -1623,7 +1622,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\ColorConstants.ets": {
-      "mtimeMs": 1776763905668.7505,
+      "mtimeMs": 1779789194175.4534,
       "children": [],
       "parent": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\DrawModel.ets"
@@ -1643,16 +1642,6 @@
       "children": [],
       "parent": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\DrawModel.ets"
-      ],
-      "error": false
-    },
-    "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.matrix4.d.ts": {
-      "mtimeMs": 1774582692000,
-      "children": [],
-      "parent": [
-        "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\view\\PrizeDialog.ets",
-        "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\build-tools\\ets-loader\\declarations\\common.d.ts",
-        "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\build-tools\\ets-loader\\declarations\\image.d.ts"
       ],
       "error": false
     },
@@ -1780,6 +1769,15 @@
       "children": [],
       "parent": [
         "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\build-tools\\ets-loader\\declarations\\common.d.ts"
+      ],
+      "error": false
+    },
+    "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.matrix4.d.ts": {
+      "mtimeMs": 1774582692000,
+      "children": [],
+      "parent": [
+        "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\build-tools\\ets-loader\\declarations\\common.d.ts",
+        "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\build-tools\\ets-loader\\declarations\\image.d.ts"
       ],
       "error": false
     },

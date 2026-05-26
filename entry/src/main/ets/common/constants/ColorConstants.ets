@@ -1,18 +1,3 @@
-/*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 /**
  * Color constants for all Component.
  */
@@ -20,17 +5,17 @@ export default class ColorConstants {
   /**
    * Flower out color.
    */
-  static readonly FLOWER_OUT_COLOR: string = '#ED6E21';
+  static readonly FLOWER_OUT_COLOR: string = '#536DFE';
 
   /**
    * Flower inner color.
    */
-  static readonly FLOWER_INNER_COLOR: string = '#F8A01E';
+  static readonly FLOWER_INNER_COLOR: string = '#448AFF';
 
   /**
    * Out circle color.
    */
-  static readonly OUT_CIRCLE_COLOR: string = '#F7CD03';
+  static readonly OUT_CIRCLE_COLOR: string = '#7C4DFF';
 
   /**
    * White_color.
@@ -40,25 +25,25 @@ export default class ColorConstants {
   /**
    * Inner circle color.
    */
-  static readonly INNER_CIRCLE_COLOR: string = '#F8A01E';
+  static readonly INNER_CIRCLE_COLOR: string = '#B388FF';
 
   /**
-   * Arc pink color.
+   * Arc pink color (柔红色)
    */
-  static readonly ARC_PINK_COLOR: string = '#FFC6BD';
+  static readonly ARC_PINK_COLOR: string = '#EF9A9A';
 
   /**
-   * Arc yellow color.
+   * Arc yellow color (偏橙色柔黄)
    */
-  static readonly ARC_YELLOW_COLOR: string = '#FFEC90';
+  static readonly ARC_YELLOW_COLOR: string = '#FFE082';
 
   /**
-   * Arc green color.
+   * Arc green color (柔绿色)
    */
-  static readonly ARC_GREEN_COLOR: string = '#ECF9C7'
+  static readonly ARC_GREEN_COLOR: string = '#A5D6A7';
 
   /**
-   * Text color.
+   * Text color (深灰色，保证可读性)
    */
-  static readonly TEXT_COLOR: string = '#ED6E21';
+  static readonly TEXT_COLOR: string = '#1A1A1A';
 }
