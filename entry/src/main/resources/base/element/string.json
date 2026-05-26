@@ -18,35 +18,43 @@
     },
     {
       "name": "text_smile",
-      "value": "谢谢参与"
+      "value": "😀"
     },
     {
       "name": "text_hamburger",
-      "value": "你答应我一件事"
+      "value": "🥰"
     },
     {
       "name": "text_cake",
-      "value": "我答应你一件事"
+      "value": "😍"
     },
     {
       "name": "text_watermelon",
-      "value": "再抽一次"
+      "value": "🥳"
     },
     {
       "name": "prize_text_smile",
-      "value": "谢谢参与"
+      "value": "😀 我答应你一件事"
     },
     {
       "name": "prize_text_hamburger",
-      "value": "恭喜！你答应我一件事"
+      "value": "🥰 你答应我一件事"
     },
     {
       "name": "prize_text_cake",
-      "value": "恭喜！我答应你一件事"
+      "value": "😍 再抽一次"
     },
     {
       "name": "prize_text_watermelon",
-      "value": "恭喜！获得再抽一次"
+      "value": "🥳 说一个真心话"
+    },
+    {
+      "name": "prize_text_question",
+      "value": "😎 问我一个问题"
+    },
+    {
+      "name": "prize_text_again",
+      "value": "🤯 再抽一次"
     }
   ]
 }

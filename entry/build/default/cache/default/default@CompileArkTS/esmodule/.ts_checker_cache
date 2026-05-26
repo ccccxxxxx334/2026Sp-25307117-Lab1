@@ -1508,7 +1508,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\DrawModel.ets": {
-      "mtimeMs": 1777266013062.1255,
+      "mtimeMs": 1779784979592.1787,
       "children": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\CommonConstants.ets",
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\common\\constants\\CommonConstants.ets",
@@ -1525,7 +1525,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\view\\PrizeDialog.ets": {
-      "mtimeMs": 1776763905781.7502,
+      "mtimeMs": 1779784515073.0913,
       "children": [
         "E:\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.matrix4.d.ts",
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\PrizeData.ets",
@@ -1538,7 +1538,7 @@
       "error": false
     },
     "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\viewmodel\\PrizeData.ets": {
-      "mtimeMs": 1776763905811.315,
+      "mtimeMs": 1779784540569.1472,
       "children": [],
       "parent": [
         "D:\\Devecostudio\\CanvasComponent-master\\CanvasComponent-master\\entry\\src\\main\\ets\\pages\\CanvasPage.ets",

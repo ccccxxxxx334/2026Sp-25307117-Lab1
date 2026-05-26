@@ -21,107 +21,115 @@
 			"id":	"0x01000004"
 		}, {
 			"type":	"string",
-			"name":	"prize_text_cake",
+			"name":	"prize_text_again",
 			"id":	"0x01000005"
 		}, {
 			"type":	"string",
-			"name":	"prize_text_hamburger",
+			"name":	"prize_text_cake",
 			"id":	"0x01000006"
 		}, {
 			"type":	"string",
-			"name":	"prize_text_smile",
+			"name":	"prize_text_hamburger",
 			"id":	"0x01000007"
 		}, {
 			"type":	"string",
-			"name":	"prize_text_watermelon",
+			"name":	"prize_text_question",
 			"id":	"0x01000008"
 		}, {
 			"type":	"string",
-			"name":	"text_cake",
+			"name":	"prize_text_smile",
 			"id":	"0x01000009"
 		}, {
 			"type":	"string",
-			"name":	"text_confirm",
+			"name":	"prize_text_watermelon",
 			"id":	"0x0100000A"
 		}, {
 			"type":	"string",
-			"name":	"text_hamburger",
+			"name":	"text_cake",
 			"id":	"0x0100000B"
 		}, {
 			"type":	"string",
-			"name":	"text_smile",
+			"name":	"text_confirm",
 			"id":	"0x0100000C"
 		}, {
 			"type":	"string",
-			"name":	"text_watermelon",
+			"name":	"text_hamburger",
 			"id":	"0x0100000D"
 		}, {
-			"type":	"color",
-			"name":	"dialog_background",
+			"type":	"string",
+			"name":	"text_smile",
 			"id":	"0x0100000E"
 		}, {
-			"type":	"color",
-			"name":	"start_window_background",
+			"type":	"string",
+			"name":	"text_watermelon",
 			"id":	"0x0100000F"
 		}, {
 			"type":	"color",
-			"name":	"text_font_color",
+			"name":	"dialog_background",
 			"id":	"0x01000010"
 		}, {
-			"type":	"float",
-			"name":	"dialog_font_size",
+			"type":	"color",
+			"name":	"start_window_background",
 			"id":	"0x01000011"
 		}, {
-			"type":	"float",
-			"name":	"dialog_height",
+			"type":	"color",
+			"name":	"text_font_color",
 			"id":	"0x01000012"
 		}, {
 			"type":	"float",
-			"name":	"dialog_image_bottom",
+			"name":	"dialog_font_size",
 			"id":	"0x01000013"
 		}, {
 			"type":	"float",
-			"name":	"dialog_image_size",
+			"name":	"dialog_height",
 			"id":	"0x01000014"
 		}, {
 			"type":	"float",
-			"name":	"dialog_image_top",
+			"name":	"dialog_image_bottom",
 			"id":	"0x01000015"
 		}, {
 			"type":	"float",
-			"name":	"dialog_message_bottom",
+			"name":	"dialog_image_size",
 			"id":	"0x01000016"
 		}, {
-			"type":	"media",
-			"name":	"ic_background",
+			"type":	"float",
+			"name":	"dialog_image_top",
 			"id":	"0x01000017"
 		}, {
-			"type":	"media",
-			"name":	"ic_cake",
+			"type":	"float",
+			"name":	"dialog_message_bottom",
 			"id":	"0x01000018"
 		}, {
 			"type":	"media",
-			"name":	"ic_center",
+			"name":	"ic_background",
 			"id":	"0x01000019"
 		}, {
 			"type":	"media",
-			"name":	"ic_hamburg",
+			"name":	"ic_cake",
 			"id":	"0x0100001A"
 		}, {
 			"type":	"media",
-			"name":	"ic_smile",
+			"name":	"ic_center",
 			"id":	"0x0100001B"
 		}, {
 			"type":	"media",
-			"name":	"ic_watermelon",
+			"name":	"ic_hamburg",
 			"id":	"0x0100001C"
 		}, {
 			"type":	"media",
-			"name":	"icon",
+			"name":	"ic_smile",
 			"id":	"0x0100001D"
+		}, {
+			"type":	"media",
+			"name":	"ic_watermelon",
+			"id":	"0x0100001E"
+		}, {
+			"type":	"media",
+			"name":	"icon",
+			"id":	"0x0100001F"
 		}, {
 			"type":	"profile",
 			"name":	"main_pages",
-			"id":	"0x0100001E"
+			"id":	"0x01000020"
 		}]
 }

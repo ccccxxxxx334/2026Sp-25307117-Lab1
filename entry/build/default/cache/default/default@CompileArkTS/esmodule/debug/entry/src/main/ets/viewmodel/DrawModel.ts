@@ -1,7 +1,5 @@
 import CommonConstants from "@bundle:com.example.canvascomponent/entry/ets/common/constants/CommonConstants";
-import { EnumeratedValue } from "@bundle:com.example.canvascomponent/entry/ets/common/constants/CommonConstants";
 import ColorConstants from "@bundle:com.example.canvascomponent/entry/ets/common/constants/ColorConstants";
-import StyleConstants from "@bundle:com.example.canvascomponent/entry/ets/common/constants/StyleConstants";
 import PrizeData from "@bundle:com.example.canvascomponent/entry/ets/viewmodel/PrizeData";
 import FillArcData from "@bundle:com.example.canvascomponent/entry/ets/viewmodel/FillArcData";
 import Logger from "@bundle:com.example.canvascomponent/entry/ets/common/utils/Logger";
@@ -44,6 +42,7 @@ export default class DrawModel {
         this.drawArcText();
         // Draw the picture corresponding to the prize in the internal fan area.
         this.drawImage();
+        this.drawEmojiInSector();
         this.canvasContext.translate(-this.screenWidth / CommonConstants.TWO, -screenHeight / CommonConstants.TWO);
     }
     /**
@@ -125,25 +124,93 @@ export default class DrawModel {
      * Draw text in the internal fan area.
      */
     drawArcText() {
-        if (this.canvasContext !== undefined) {
-            this.canvasContext.textAlign = CommonConstants.TEXT_ALIGN;
-            this.canvasContext.textBaseline = CommonConstants.TEXT_BASE_LINE;
-            this.canvasContext.fillStyle = ColorConstants.TEXT_COLOR;
-            this.canvasContext.font = StyleConstants.ARC_TEXT_SIZE + CommonConstants.CANVAS_FONT;
+        if (this.canvasContext === undefined) {
+            return;
         }
-        let textArrays = [
-            { "id": 16777228, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
-            { "id": 16777227, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
-            { "id": 16777225, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
-            { "id": 16777228, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
-            { "id": 16777227, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
-            { "id": 16777229, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }
+        this.canvasContext.textAlign = CommonConstants.TEXT_ALIGN;
+        this.canvasContext.textBaseline = CommonConstants.TEXT_BASE_LINE;
+        this.canvasContext.fillStyle = '#000000'; // 黑色
+        this.canvasContext.font = '50px sans-serif';
+        // 奖品文字列表（不带 emoji，因为弧形文字容易乱）
+        let textList = [
+            '我答应你一件事',
+            '你答应我一件事',
+            '再抽一次',
+            '说一个真心话',
+            '问我一个问题',
+            '再抽一次'
         ];
         let arcTextStartAngle = CommonConstants.ARC_START_ANGLE;
         let arcTextEndAngle = CommonConstants.ARC_END_ANGLE;
+        let start = this.startAngle;
         for (let i = 0; i < CommonConstants.COUNT; i++) {
-            this.drawCircularText(this.getResourceString(textArrays[i]), (this.startAngle + arcTextStartAngle) * Math.PI / CommonConstants.HALF_CIRCLE, (this.startAngle + arcTextEndAngle) * Math.PI / CommonConstants.HALF_CIRCLE);
-            this.startAngle += this.avgAngle;
+            let text = textList[i];
+            let startRad = (start + arcTextStartAngle) * Math.PI / CommonConstants.HALF_CIRCLE;
+            let endRad = (start + arcTextEndAngle) * Math.PI / CommonConstants.HALF_CIRCLE;
+            // 如果是长文字（包含“一件事”、“真心话”、“问题”），分两行画
+            if (text === '我答应你一件事') {
+                this.drawCircularText('一件事', startRad, endRad, -15); // 第一行，偏移0
+                this.drawCircularText('我答应你', startRad, endRad, 3); // 第二行，向外偏移15px
+            }
+            else if (text === '你答应我一件事') {
+                this.drawCircularText('一件事', startRad, endRad, -15);
+                this.drawCircularText('你答应我', startRad, endRad, 3);
+            }
+            else if (text === '说一个真心话') {
+                this.drawCircularText('真心话', startRad, endRad, -15);
+                this.drawCircularText('说一个', startRad, endRad, 3);
+            }
+            else if (text === '问我一个问题') {
+                this.drawCircularText('个问题', startRad, endRad, -15);
+                this.drawCircularText('问我一', startRad, endRad, 3);
+            }
+            else {
+                this.drawCircularText(text, startRad, endRad, 0);
+            }
+            start += this.avgAngle;
+        }
+    }
+    /**
+     * 在扇形中间画大表情
+     */
+    drawEmojiInSector() {
+        if (this.canvasContext === undefined) {
+            return;
+        }
+        let radius = this.screenWidth * CommonConstants.INNER_ARC_RATIOS;
+        let centerX = 0;
+        let centerY = 0;
+        let emojiList = ['😀', '🥰', '😍', '🥳', '😎', '🤯'];
+        let textList = [
+            '我答应你一件事',
+            '你答应我一件事',
+            '再抽一次',
+            '说一个真心话',
+            '问我一个问题',
+            '再抽一次'
+        ];
+        let start = this.startAngle;
+        let canvasContext = this.canvasContext;
+        for (let i = 0; i < CommonConstants.COUNT; i++) {
+            let midAngle = (start + this.avgAngle / 2) * Math.PI / CommonConstants.HALF_CIRCLE;
+            // 表情位置（稍微靠上）
+            let emojiX = centerX + (radius / 2.0) * Math.cos(midAngle);
+            let emojiY = centerY + (radius / 2.0) * Math.sin(midAngle);
+            // 文字位置（稍微靠下）
+            let textX = centerX + (radius / 1.8) * Math.cos(midAngle);
+            let textY = centerY + (radius / 1.8) * Math.sin(midAngle);
+            // 画表情
+            canvasContext.save();
+            canvasContext.beginPath();
+            canvasContext.translate(emojiX, emojiY);
+            canvasContext.rotate(midAngle + Math.PI / 2);
+            canvasContext.font = '80px sans-serif';
+            canvasContext.fillStyle = '#FFFFFF';
+            canvasContext.textAlign = 'center';
+            canvasContext.textBaseline = 'middle';
+            canvasContext.fillText(emojiList[i], 0, 0);
+            canvasContext.restore();
+            start += this.avgAngle;
         }
     }
     /**
@@ -172,7 +239,7 @@ export default class DrawModel {
      * @param startAngle startAngle.
      * @param endAngle endAngle.
      */
-    drawCircularText(textString: string, startAngle: number, endAngle: number) {
+    drawCircularText(textString: string, startAngle: number, endAngle: number, radiusOffset: number = 0) {
         if (CheckEmptyUtils.isEmptyStr(textString)) {
             Logger.error('[DrawModel][drawCircularText] textString is empty.');
             return;
@@ -188,7 +255,7 @@ export default class DrawModel {
             radius: this.screenWidth * CommonConstants.INNER_ARC_RATIOS
         };
         // The radius of the circle.
-        let radius = circleText.radius - circleText.radius / CommonConstants.COUNT;
+        let radius = circleText.radius - circleText.radius / CommonConstants.COUNT + radiusOffset;
         // The radians occupied by each letter.
         let angleDecrement = (startAngle - endAngle) / (textString.length - 1);
         let angle = startAngle;
@@ -210,20 +277,7 @@ export default class DrawModel {
      * Draw the picture corresponding to the prize in the internal fan area.
      */
     drawImage() {
-        let beginAngle = this.startAngle;
-        let imageSrc = [
-            CommonConstants.WATERMELON_IMAGE_URL, CommonConstants.HAMBURG_IMAGE_URL,
-            CommonConstants.SMILE_IMAGE_URL, CommonConstants.CAKE_IMAGE_URL,
-            CommonConstants.HAMBURG_IMAGE_URL, CommonConstants.SMILE_IMAGE_URL
-        ];
-        for (let i = 0; i < CommonConstants.COUNT; i++) {
-            let image = new ImageBitmap(imageSrc[i]);
-            this.canvasContext?.save();
-            this.canvasContext?.rotate(beginAngle * Math.PI / CommonConstants.HALF_CIRCLE);
-            this.canvasContext?.drawImage(image, this.screenWidth * CommonConstants.IMAGE_DX_RATIOS, this.screenWidth * CommonConstants.IMAGE_DY_RATIOS, CommonConstants.IMAGE_SIZE, CommonConstants.IMAGE_SIZE);
-            beginAngle += this.avgAngle;
-            this.canvasContext?.restore();
-        }
+        // 不画图片，保持纯色扇形
     }
     /**
      * Displaying information about prizes.
@@ -243,33 +297,42 @@ export default class DrawModel {
      *
      * @param scopeNum scopeNum.
      */
+    // 文件：DrawModel.ets 中的 getPrizeData 方法
+    // 文件：DrawModel.ets
+    // 方法：getPrizeData(scopeNum: number)
     getPrizeData(scopeNum: number): PrizeData {
         let prizeData: PrizeData = new PrizeData();
         switch (scopeNum) {
-            case EnumeratedValue.ONE:
-                prizeData.message = { "id": 16777224, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" };
-                prizeData.imageSrc = CommonConstants.WATERMELON_IMAGE_URL;
+            case 1:
+                prizeData.message = '再抽一次';
+                prizeData.emoji = '🥳';
                 break;
-            case EnumeratedValue.THREE:
-                prizeData.message = { "id": 16777223, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" };
-                prizeData.imageSrc = CommonConstants.SMILE_IMAGE_URL;
+            case 2:
+                prizeData.message = '问我一个问题';
+                prizeData.emoji = '🥰';
                 break;
-            case EnumeratedValue.FOUR:
-                prizeData.message = { "id": 16777221, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" };
-                prizeData.imageSrc = CommonConstants.CAKE_IMAGE_URL;
+            case 3:
+                prizeData.message = '说一个真心话';
+                prizeData.emoji = '😍';
                 break;
-            case EnumeratedValue.TWO:
-            case EnumeratedValue.FIVE:
-                prizeData.message = { "id": 16777222, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" };
-                prizeData.imageSrc = CommonConstants.HAMBURG_IMAGE_URL;
+            case 4:
+                prizeData.message = '再抽一次';
+                prizeData.emoji = '😀';
                 break;
-            case EnumeratedValue.SIX:
-                prizeData.message = { "id": 16777223, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" };
-                prizeData.imageSrc = CommonConstants.SMILE_IMAGE_URL;
+            case 5:
+                prizeData.message = '你答应我一件事';
+                prizeData.emoji = '😎';
+                break;
+            case 6:
+                prizeData.message = '我答应你一件事';
+                prizeData.emoji = '🤯';
                 break;
             default:
+                prizeData.message = '再抽一次';
+                prizeData.emoji = '😀';
                 break;
         }
+        prizeData.imageSrc = '';
         return prizeData;
     }
 }

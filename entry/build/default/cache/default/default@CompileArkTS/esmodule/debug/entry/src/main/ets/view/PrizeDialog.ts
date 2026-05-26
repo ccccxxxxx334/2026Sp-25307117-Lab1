@@ -59,37 +59,61 @@ export default class PrizeDialog extends ViewPU {
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
-            Column.backgroundColor({ "id": 16777230, "type": 10001, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Column.backgroundColor({ "id": 16777232, "type": 10001, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
             Column.width(StyleConstants.FULL_PERCENT);
-            Column.height({ "id": 16777234, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Column.height({ "id": 16777236, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Image.create(this.prizeData.imageSrc !== undefined ? this.prizeData.imageSrc : '');
-            Image.width({ "id": 16777236, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
-            Image.height({ "id": 16777236, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
-            Image.margin({
-                top: { "id": 16777237, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
-                bottom: { "id": 16777235, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }
-            });
-            Image.rotate({
-                x: 0,
-                y: 0,
-                z: 1,
-                angle: CommonConstants.TRANSFORM_ANGLE
-            });
-        }, Image);
+            If.create();
+            // 先显示大表情（如果有的话）
+            if (this.prizeData.emoji) {
+                this.ifElseBranchUpdateFunction(0, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(this.prizeData.emoji);
+                        Text.fontSize(80);
+                        Text.margin({ top: { "id": 16777239, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }, bottom: 10 });
+                    }, Text);
+                    Text.pop();
+                });
+            }
+            else {
+                this.ifElseBranchUpdateFunction(1, () => {
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 如果没有单独的表情，就显示原来的图片（兜底）
+                        Image.create(this.prizeData.imageSrc !== undefined ? this.prizeData.imageSrc : '');
+                        // 如果没有单独的表情，就显示原来的图片（兜底）
+                        Image.width({ "id": 16777238, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+                        // 如果没有单独的表情，就显示原来的图片（兜底）
+                        Image.height({ "id": 16777238, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+                        // 如果没有单独的表情，就显示原来的图片（兜底）
+                        Image.margin({
+                            top: { "id": 16777239, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" },
+                            bottom: { "id": 16777237, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }
+                        });
+                        // 如果没有单独的表情，就显示原来的图片（兜底）
+                        Image.rotate({
+                            x: 0,
+                            y: 0,
+                            z: 1,
+                            angle: CommonConstants.TRANSFORM_ANGLE
+                        });
+                    }, Image);
+                });
+            }
+        }, If);
+        If.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create(this.prizeData.message);
-            Text.fontSize({ "id": 16777233, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Text.fontSize({ "id": 16777235, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
             Text.textAlign(TextAlign.Center);
-            Text.margin({ bottom: { "id": 16777238, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" } });
+            Text.margin({ bottom: { "id": 16777240, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" } });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create({ "id": 16777226, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
-            Text.fontColor({ "id": 16777232, "type": 10001, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Text.create({ "id": 16777228, "type": 10003, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Text.fontColor({ "id": 16777234, "type": 10001, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
             Text.fontWeight(StyleConstants.FONT_WEIGHT);
-            Text.fontSize({ "id": 16777233, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Text.fontSize({ "id": 16777235, "type": 10002, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
             Text.textAlign(TextAlign.Center);
             Text.onClick(() => {
                 this.controller?.close();

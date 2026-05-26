@@ -26,19 +26,27 @@ export default struct PrizeDialog {
 
   build() {
     Column() {
-      Image(this.prizeData.imageSrc !== undefined ? this.prizeData.imageSrc : '')
-        .width($r('app.float.dialog_image_size'))
-        .height($r('app.float.dialog_image_size'))
-        .margin({
-          top: $r('app.float.dialog_image_top'),
-          bottom: $r('app.float.dialog_image_bottom')
-        })
-        .rotate({
-          x: 0,
-          y: 0,
-          z: 1,
-          angle: CommonConstants.TRANSFORM_ANGLE
-        })
+      // 先显示大表情（如果有的话）
+      if (this.prizeData.emoji) {
+        Text(this.prizeData.emoji)
+          .fontSize(80)
+          .margin({ top: $r('app.float.dialog_image_top'), bottom: 10 })
+      } else {
+        // 如果没有单独的表情，就显示原来的图片（兜底）
+        Image(this.prizeData.imageSrc !== undefined ? this.prizeData.imageSrc : '')
+          .width($r('app.float.dialog_image_size'))
+          .height($r('app.float.dialog_image_size'))
+          .margin({
+            top: $r('app.float.dialog_image_top'),
+            bottom: $r('app.float.dialog_image_bottom')
+          })
+          .rotate({
+            x: 0,
+            y: 0,
+            z: 1,
+            angle: CommonConstants.TRANSFORM_ANGLE
+          })
+      }
 
       Text(this.prizeData.message)
         .fontSize($r('app.float.dialog_font_size'))

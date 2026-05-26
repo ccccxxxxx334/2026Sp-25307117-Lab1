@@ -16,12 +16,7 @@
  * Prize data.
  */
 export default class PrizeData {
-    /**
-     * The prize message.
-     */
-    message?: Resource;
-    /**
-     * Image src.
-     */
+    message?: string;
     imageSrc?: string;
+    emoji?: string; // 新增
 }

@@ -229,7 +229,7 @@ class CanvasPage extends ViewPU {
             Stack.create({ alignContent: Alignment.Center });
             Stack.width(StyleConstants.FULL_PERCENT);
             Stack.height(StyleConstants.FULL_PERCENT);
-            Stack.backgroundImage({ "id": 16777239, "type": 20000, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }, ImageRepeat.NoRepeat);
+            Stack.backgroundImage({ "id": 16777241, "type": 20000, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" }, ImageRepeat.NoRepeat);
             Stack.backgroundImageSize({
                 width: StyleConstants.FULL_PERCENT,
                 height: StyleConstants.BACKGROUND_IMAGE_SIZE
@@ -253,7 +253,7 @@ class CanvasPage extends ViewPU {
         }, Canvas);
         Canvas.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Image.create({ "id": 16777241, "type": 20000, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
+            Image.create({ "id": 16777243, "type": 20000, params: [], "bundleName": "com.example.canvascomponent", "moduleName": "entry" });
             Image.width(StyleConstants.CENTER_IMAGE_WIDTH);
             Image.height(StyleConstants.CENTER_IMAGE_HEIGHT);
             Image.enabled(this.enableFlag);
